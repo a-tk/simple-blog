@@ -10,25 +10,21 @@
    * Service in the simpleBlogApp.
    */
   angular.module('simpleBlogApp')
-    .service('BlogModel', function () {
-      var vm = this;
-      vm.posts = [
-        {
-          name: 'test post',
-          date: Date.now(),
-          content: 'lorem ipsum',
-          comments: [
-            {
-              poster: 'test commenter',
-              date: Date.now(),
-              content: 'i like this!'
-            }
-          ]
-        }
-      ];
+    .service('BlogModel', function ($http) {
+      var BlogModel = {
+        getPosts: getPosts
+      };
 
-      vm.getPosts = function () {
-        return vm.posts;
+      return BlogModel;
+
+      function getPosts(postsContainer) {
+        $http.get('db.json').then(function (posts) {
+          console.log(JSON.stringify(posts.data));
+          postsContainer = posts.data;
+        },
+        function (msg) {
+          console.log(msg);
+        });
       }
     });
 })();
