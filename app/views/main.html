@@ -1,0 +1,17 @@
+<div class="hero-unit">
+  <h1>Simple angular Blog</h1>
+  <div data-ng-controller="MainCtrl as vm">
+    <h1>{{vm.title}}</h1>
+    <div data-ng-repeat="post in vm.posts">
+      <p>{{post.name}}</p>
+      <p>{{post.date}}</p>
+      <p>{{post.content}}</p>
+      <div data-ng-repeat="comment in post.comments">
+        <p>{{comment.poster}}</p>
+        <p>{{comment.date}}</p>
+        <p>{{comment.content}}</p>
+      </div>
+
+    </div>
+  </div>
+</div>
