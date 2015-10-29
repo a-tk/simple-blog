@@ -18,12 +18,12 @@
       vm.addPost = addPost;
       vm.addComment = addComment;
 
-      function addPost (title, author, content) {
-        console.log('going to add post with title ' + title + ' and author ' + author + ' content ' + content);
+      function addPost (post) {
+        BlogModel.addPost(post);
       }
 
-      function addComment (post, author, content) {
-        console.log('going to add comment to post ' + post.title + ' with author ' + author + ' content ' + content);
+      function addComment (postId, comment) {
+        BlogModel.addComment(postId, comment);
 
       }
       function populatePosts(posts) {

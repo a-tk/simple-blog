@@ -12,16 +12,36 @@
   angular.module('simpleBlogApp')
     .service('BlogModel', function ($http) {
       var BlogModel = {
-        getPosts: getPosts
+        getPosts: getPosts,
+        addPost:addPost,
+        addComment: addComment
       };
 
       return BlogModel;
 
       function getPosts(callback) {
-        $http.get('db.json').then(callback,
+        $http.get('api/getPosts').then(callback,
         function (err) {
           console.log(err);
         });
       }
+
+      function addPost(post) {
+        $http.post('api/addPost/', post).then(function (response) {
+          console.log(response);
+        }, function (response) {
+          console.log(response);
+        });
+      }
+
+
+      function addComment(postId, comment) {
+        $http.post('api/addComment/'+ postId, comment).then(function (response) {
+          console.log(response);
+        }, function (response) {
+          console.log(response);
+        });
+      }
+
     });
 })();
