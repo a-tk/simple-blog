@@ -14,6 +14,7 @@
       var BlogModel = {
         getPosts: getPosts,
         addPost:addPost,
+        deletePost: deletePost,
         addComment: addComment
       };
 
@@ -37,6 +38,14 @@
 
       function addComment(postId, comment) {
         $http.post('api/addComment/'+ postId, comment).then(function (response) {
+          console.log(response);
+        }, function (response) {
+          console.log(response);
+        });
+      }
+
+      function deletePost(postId) {
+        $http.get('api/deletePost/'+ postId).then(function (response) {
           console.log(response);
         }, function (response) {
           console.log(response);

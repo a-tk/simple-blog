@@ -8,6 +8,7 @@ module.exports = function() {
   return {
     getPosts: getPosts,
     addPost: addPost,
+    deletePost: deletePost,
     addComment: addComment
   };
 
@@ -24,7 +25,7 @@ module.exports = function() {
   }
 
   function persist() {
-    fs.writeFile(dbLoc, JSON.stringify(db), 'utf8', function (err) {
+    fs.writeFile(dbLoc, JSON.stringify(db), {flags: 'wx'}, 'utf8', function (err) {
       if (err) {
         console.log(err);
       } else {
@@ -39,7 +40,6 @@ module.exports = function() {
 
   function addComment(postId, comment) {
     comment.date = new Date().toUTCString();
-    console.log(JSON.stringify(comment));
     db[postId].comments.unshift(comment);
     persist();
   }
@@ -49,6 +49,11 @@ module.exports = function() {
     post.comments = [];
     post.date = new Date().toUTCString();
     db.unshift(post);
+    persist();
+  }
+
+  function deletePost(postId) {
+    db.splice(postId, 1);
     persist();
   }
 };
