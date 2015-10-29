@@ -17,13 +17,10 @@
 
       return BlogModel;
 
-      function getPosts(postsContainer) {
-        $http.get('db.json').then(function (posts) {
-          console.log(JSON.stringify(posts.data));
-          postsContainer = posts.data;
-        },
-        function (msg) {
-          console.log(msg);
+      function getPosts(callback) {
+        $http.get('db.json').then(callback,
+        function (err) {
+          console.log(err);
         });
       }
     });

@@ -15,16 +15,23 @@
       vm.title = 'TestTitle';
       vm.posts = [];
       vm.activate = activate();
+      vm.addPost = addPost;
+      vm.addComment = addComment;
+
+      function addPost (title, author, content) {
+        console.log('going to add post with title ' + title + ' and author ' + author + ' content ' + content);
+      }
+
+      function addComment (post, author, content) {
+        console.log('going to add comment to post ' + post.title + ' with author ' + author + ' content ' + content);
+
+      }
+      function populatePosts(posts) {
+        vm.posts = posts.data;
+      }
 
       function activate() {
-        $http.get('db.json').then( function (posts) {
-          console.log(JSON.stringify(posts.data));
-          vm.posts = posts.data;
-        },
-        function (msg) {
-          console.log(msg);
-        });
-        //BlogModel.getPosts(vm.posts);
+        BlogModel.getPosts(populatePosts);
       }
     });
 })();
