@@ -1,12 +1,6 @@
 # simple-blog
 
-This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
-version 0.14.0.
+This simple blog Project is for my CS 497 - enterprise Web Development HW3.
 
-## Build & development
+Please visit the website <a href="lwefd.me">lwefd.me</a> to see it in action.
 
-Run `grunt` for building and `grunt serve` for preview.
-
-## Testing
-
-Running `grunt test` will run the unit tests with karma.
