@@ -10,7 +10,7 @@
    * Controller of the simpleBlogApp
    */
   angular.module('simpleBlogApp')
-    .controller('MainCtrl', function ($scope, $http, BlogModel) {
+    .controller('MainCtrl', function ($scope, $route, $http, BlogModel) {
       var vm = this;
       vm.title = 'TestTitle';
       vm.posts = [];
@@ -27,7 +27,7 @@
       }
 
       function addComment (postId, comment) {
-        if (postId && comment && comment.author && comment.content) {
+        if (comment && comment.author && comment.content) {
           BlogModel.addComment(postId, comment);
           BlogModel.getPosts(populatePosts);
         }

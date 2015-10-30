@@ -10,7 +10,7 @@
    * Service in the simpleBlogApp.
    */
   angular.module('simpleBlogApp')
-    .service('BlogModel', function ($http) {
+    .service('BlogModel', function ($http, $route) {
       var BlogModel = {
         getPosts: getPosts,
         addPost:addPost,
@@ -30,6 +30,7 @@
       function addPost(post) {
         $http.post('api/addPost/', post).then(function (response) {
           console.log(response);
+          $route.reload();
         }, function (response) {
           console.log(response);
         });
@@ -39,6 +40,7 @@
       function addComment(postId, comment) {
         $http.post('api/addComment/'+ postId, comment).then(function (response) {
           console.log(response);
+          $route.reload();
         }, function (response) {
           console.log(response);
         });
@@ -47,6 +49,7 @@
       function deletePost(postId) {
         $http.get('api/deletePost/'+ postId).then(function (response) {
           console.log(response);
+          $route.reload();
         }, function (response) {
           console.log(response);
         });
