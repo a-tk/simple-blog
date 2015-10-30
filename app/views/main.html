@@ -6,7 +6,7 @@
           <li data-ng-repeat="post in vm.posts track by $index">
             <!--TODO need some way of filtering-->
             <a scroll-to-element scroll-to="#post-{{$index}}">
-              {{post.title}}
+              {{post.title}} <small>- {{post.date}}</small>
             </a>
           </li>
         </ul>
@@ -21,8 +21,7 @@
           <input id="addPostAuthor" required type="text" class="form-control" data-ng-model="post.author"/><br/>
           <label for="addPostContent">What is your message?</label><br/>
           <textarea id="addPostContent" required class="form-control" data-ng-model="post.content"></textarea><br/>
-          <button type="submit" class="btn btn-default" data-ng-click="vm.addPost(post)">New Post
-          </button>
+          <input type="submit" class="btn btn-default" data-ng-click="vm.addPost(post);" value="New Post">
         </div>
       </form>
       <div data-ng-repeat="post in vm.posts | orderBy: $index track by $index">
@@ -34,7 +33,7 @@
             <h6>{{post.date}}</h6>
 
             <p>{{post.content}}</p>
-            <button class="btn btn-default" data-ng-click="vm.deletePost($index)">Delete</button>
+            <button type="button" class="btn btn-default" data-ng-click="vm.deletePost($index)">Delete</button>
           </div>
 
           <div class="comment-enclosure">
@@ -44,9 +43,7 @@
                 <input type="text" class="form-control" data-ng-model="comment.author" required/><br/>
                 <label>What do you want to say?</label>
                 <input type="text" class="form-control" data-ng-model="comment.content" required/><br/>
-                <input type="submit" class="btn btn-default" data-ng-click="vm.addComment($index, comment)">
-                  New Comment
-                </input>
+                <input type="submit" class="btn btn-default" data-ng-click="vm.addComment($index, comment);" value="New Comment">
               </div>
             </form>
             <div class="comment-emphasis" data-ng-repeat="comment in post.comments">

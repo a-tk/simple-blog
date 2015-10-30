@@ -1,12 +1,17 @@
 # simple-blog
 
-This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
-version 0.14.0.
+This simple blog project is for my CS 497 - Enterprise Web Development HW3.
 
-## Build & development
+Please visit the website <a href="http://lwefd.me">lwefd.me</a> to see it in action.
 
-Run `grunt` for building and `grunt serve` for preview.
+# mvc technology
 
-## Testing
+In this project I wanted to use AngularJS to make a blog using the model view controller
+pattern.
 
-Running `grunt test` will run the unit tests with karma.
+So, the entire frontend is an angular app, using bootstrap for styling. 
+On the backend, I run a simple NodeJS server, that serves api urls for data persistence.
+
+Data is simple in this app; all posts are stored in a json text file on the server, but yea, it was 
+never built to scale for many users.
+

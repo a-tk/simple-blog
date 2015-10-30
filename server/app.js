@@ -14,7 +14,9 @@ var environment = process.env.NODE_ENV;
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(compress());            // Compress response data with gzip
-app.use(logger('dev'));
+if (environment == 'development') {
+  app.use(logger('dev'));
+}
 
 var db = require('./model/db')('./data/db.json');
 

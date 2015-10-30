@@ -11,10 +11,12 @@ module.exports = function (app, db) {
 
   function addPost(req, res, next) {
     db.addPost(req.body);
+    res.send('ok');
   }
 
   function addComment(req, res, next) {
     db.addComment(req.params.id, req.body);
+    res.send('ok');
   }
 
   function deletePost(req, res, next) {
